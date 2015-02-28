@@ -102,6 +102,14 @@ class Hand
     end
   end
 
+  def render
+    hand_string = ""
+    @cards.each do |card|
+      hand_string << card.render
+    end
+    hand_string
+  end
+
   private
 
   def compare_cards(arr = @cards)

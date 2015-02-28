@@ -74,4 +74,7 @@ class Card
     self.suit == card.suit
   end
 
+  def render
+    "#{value}#{suit_string}"
+  end
 end

@@ -1,6 +1,10 @@
-class Player
+require_relative 'hand'
 
-  def initialize(pot)
+class Player
+  attr_reader :pot
+
+  def initialize(name, pot)
+    @name = name
     @pot = pot
     @called = false
   end
