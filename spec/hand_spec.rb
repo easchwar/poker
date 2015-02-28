@@ -44,6 +44,7 @@ RSpec.describe Hand do
     subject(:straight) { Hand.new([two_c, four, five, three, six]) }
     subject(:s_flush) { Hand.new([two_s, three, four, five, six]) }
     subject(:two_kind) { Hand.new([two_c, two_s, four, five, jack]) }
+    subject(:two_pair) { Hand.new([two_c, two_s, six, six_d, jack]) }
     subject(:three_kind) { Hand.new([two_c, three, two_d, five, two_h]) }
     subject(:four_kind) { Hand.new([two_c, three, two_h, two_d, two_s]) }
     subject(:full_house) { Hand.new([two_c, six_d, two_h, two_s, six]) }
@@ -87,7 +88,17 @@ RSpec.describe Hand do
       end
 
       it "returns false for anything else" do
-        expect(flush).to_not be_pair
+        expect(three_kind).to_not be_pair
+      end
+    end
+
+    context "#two_pair?" do
+      it "returns true for a pair" do
+        expect(two_pair).to be_two_pair
+      end
+
+      it "returns false for anything else" do
+        expect(two_kind).to_not be_two_pair
       end
     end
 
