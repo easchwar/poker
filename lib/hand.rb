@@ -1,6 +1,16 @@
 require_relative 'card'
 
 class Hand
+  HAND_RANK = {straight_flush:  1,
+               four_of_a_kind:  2,
+               full_house:      3,
+               flush:           4,
+               straight:        5,
+               three_of_a_kind: 6,
+               two_pair:        7,
+               pair:            8,
+               high_card:       9}
+
   attr_reader :cards
 
 
@@ -50,7 +60,6 @@ class Hand
     triples = compare_cards
     new_arr = @cards.reject { |card| triples.include?(card) }
     compare_cards(new_arr).length == 2
-
   end
 
   def flush?
@@ -73,14 +82,23 @@ class Hand
 
   def highest_hand
     if straight_flush?
+      HAND_RANK[:straight_flush]
     elsif four_of_a_kind?
+      HAND_RANK[:four_of_a_kind]
     elsif full_house?
+      HAND_RANK[:full_house]
     elsif flush?
+      HAND_RANK[:flush]
     elsif straight?
+      HAND_RANK[:straight]
     elsif three_of_a_kind?
+      HAND_RANK[:three_of_a_kind]
     elsif two_pair?
+      HAND_RANK[:two_pair]
     elsif pair?
+      HAND_RANK[:pair]
     else
+      HAND_RANK[:high_card]
     end
   end
 

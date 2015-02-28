@@ -49,7 +49,13 @@ RSpec.describe Hand do
     subject(:four_kind) { Hand.new([two_c, three, two_h, two_d, two_s]) }
     subject(:full_house) { Hand.new([two_c, six_d, two_h, two_s, six]) }
 
-
+    context "#highest_hand" do
+      it "returns highest rank of your hand" do
+        expect(flush.highest_hand).to eq(4)
+        expect(s_flush.highest_hand).to eq(1)
+        expect(full_house.highest_hand).to eq(3)
+      end
+    end
 
     context "#flush?" do
       it "returns true for a flush" do
