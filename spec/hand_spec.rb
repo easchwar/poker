@@ -12,7 +12,6 @@ RSpec.describe Hand do
   subject(:six) { Card.new(:six, :spades) }
   subject(:six_d) { Card.new(:six, :diamonds) }
   subject(:jack) { Card.new(:jack, :spades) }
-  let(:deck) { double("deck", deal: [6, 7]) }
   subject(:hand) { Hand.new([1, 2, 3, 4, 5]) }
 
   describe "::initialize" do
@@ -32,9 +31,9 @@ RSpec.describe Hand do
     end
   end
 
-  describe "#take_cards" do
+  describe "#add_cards" do
     it "takes cards from a deck" do
-      hand.take_cards(2, deck)
+      hand.add_cards([6,7])
       expect(hand.cards).to eq([1,2,3,4,5,6,7])
     end
   end

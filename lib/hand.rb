@@ -28,8 +28,8 @@ class Hand
     end
   end
 
-  def take_cards(num, deck)
-    @cards += deck.deal(num)
+  def add_cards(cards)
+    @cards += cards
   end
 
   def sort
